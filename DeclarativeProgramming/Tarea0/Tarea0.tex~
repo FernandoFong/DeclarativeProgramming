@@ -1,0 +1,205 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\newcommand*{\QEDB}{\hfill\ensuremath{\square}}%
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}
+\title{Tarea 0 Programación Declarativa}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{
+style=mystyle,
+literate={á}{{\'a}}1
+        {ã}{{\~a}}1
+        {é}{{\'e}}1
+        {ó}{{\'o}}1
+        {í}{{\'i}}1
+        {ñ}{{\~n}}1
+        {¡}{{!`}}1
+        {¿}{{?`}}1
+        {ú}{{\'u}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+}
+
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+\begin{document}
+\title{\vspace{-1.5cm}
+	Tarea 0\\
+    \large Universidad Nacional Autónoma de México\\
+    Facutlad de Ciencias\\
+    Programación Declarativa\\
+}
+\author{
+	Fong Baeza Luis Fernando Yang\\
+    313320679\\
+    \texttt{fernandofong@ciencias.unam.mx}
+    }
+\date{21 de Febrero 2018}
+\maketitle
+
+\section {Dada la definición recursiva de los naturales y la función suma, demostrar por inducción que:}
+
+\begin{enumerate}
+\item $\forall n\in\mathbb{N}$ [n + 0 = n]\\
+Demostración por inducción sobre n:
+\begin{enumerate}
+\item Caso base: n = 0
+
+Entonces siguiendo la definición de la suma hay que ver que 0 + 0 = 0 que por cómo está definida, por el lado izquierdo, si el lado izquierdo es cero, se cumple, entonces para el caso base se cumple.
+
+\item Hipótesis de Inducción; Supongamos que vale para n
+
+\item Paso Inductivo: Demostrar que se vale para S(n)
+
+Entonces queremos demostrar que S(n) + 0 = S(n), siguiendo la definición tenemos que S(n) + 0 = S(n + 0) pero por H.I. tenemos que n + 0 = n entonces tenemos que S(n) + 0 = S(n)
+\QEDB
+\end{enumerate}
+\item $\forall n\in\mathbb{N}$ [S(n) = n + 1]\\
+Demostración por inducción sobre n:
+\begin{enumerate}
+\item Caso base: n = 0
+
+Queremos demostrar que S(0) = 0 + 1, entonces por la definición de la función suma tenemos que 0 + 1 = 1, entonces tenemos que S(0) = 1 por transitividad de la igualdad, el cual, cumple para nuestro caso base.
+
+\item Hipótesis de Inducción; Supongamos que vale para n.
+
+\item Paso Inductivo: Demostrar que S(n + 1) = n + 2
+
+Queremos demostrar que S(n + 1) = n + 2, entonces podemos verlo como S(n + 1) = (n + 1) + 1
+pero ya sabemos por H.I. que (n + 1) = S(n) entonces S(S(n)) = S(n) + 1 que es justo lo que queríamos demostrar.
+\QEDB
+
+\end{enumerate}
+\end{enumerate}
+\section {Dar una definición recursiva de la función $*:\mathbb N\to\mathbb N$}
+Entonces definimos a * como:\\
+
+\tab[0.4cm]S(0) * n = n\\
+\tab S(m) * n = (n * m) + n\\
+
+\begin{enumerate}
+\item Demostrar que $\forall n\in\mathbb{N}$ [n * 0 = 0] ya que $\forall n\in\mathbb{N}$ [0 * n = 0]
+
+Por inducción sobre n.
+
+\begin{enumerate}
+\item Caso base: n = 0
+
+Demostraremos que 0 * 0 = 0, pero siguiendo la definición de la función, encontramos que esto es cierto si n = 0.
+
+\item Hipótesis de Inducción; supongamos que vale para n.
+\item Paso inductivo: Demostrar que (n + 1) * 0 = 0
+
+Entonces tenemos por la demostración anterior que n + 1 = S(n) entonces queremos demostrar que S(n) * 0 = 0, entonces siguiendo la definición tenemos que S(n) * 0 = n * (0 + 0) pero por definición de suma tenemos que 0 + 0 = 0, entonces tenemos que S(n) * 0 = n * 0 y por H.I. tenemos que n * 0 = 0, entonces S(n) * 0 = 0.
+\QEDB
+\end{enumerate}
+\item $\forall n\in\mathbb{N}$ [n * 1 = 1]
+
+Inducción sobre n.
+
+\begin{enumerate}
+\item Caso base: n = 1
+
+Vamos a ver que en efecto 1*1 = 1, entonces por la definición, como S(0) = 1, lo podemos ver como S(0) = n = 1, entonces tenemos seguido de la definición que S(0)*1 = 1.
+
+\item Hipótesis de inducción; supongamos que n * 1 = n.
+
+\item Paso Inductivo: Demostrar S(n) * 1 = S(n)
+
+Entonces hay que demostrar que S(n) * 1 = S(n), entonces siguiendo la definición tenemos que S(n) * 1 = (n * 1) + 1, pero por hipótesis de inducción sabemos que n * 1 = n, entonces sustituimos en la igualdad anterior y tenemos que S(n) * 1 = n + 1 y por definición n + 1 = S(n), entonces sustituyendo tenemos que S(n) * 1 = S(n).
+\QEDB
+\end{enumerate}
+\end {enumerate}
+
+\section{Definir una función recursiva que nos diga si 2 naturales son iguales.}
+Podemos definirla de la siguiente forma:\\
+
+\tab [0.4cm]f(0, 0) = True \tab Son iguales si llegan al mismo tiempo al 0.\\
+\tab f(S(n), 0) = False \tab Son distintos si uno llegó antes.\\
+\tab f(0, S(m)) = False\\
+\tab f(S(n), S(m)) = f(n, m) \tab Se calcula a ver quién llega primero o si llegan al mismo tiempo.\\
+
+\section{Sea la función misteriosa, descubrir que hace.}
+
+Si m = 0, entonces h(n, m) = 1, por cómo está definida, falta esta parte.\\
+
+\tab[0.4cm]h(n, 2k) = h(n*n, k) para algun k $\in\mathbb{Z}$\\
+\tab h(n, m) = n * (h(n, m - 1))\\
+
+Observando el caso base, tenemos que si m = 0, entonces regresamos uno, sin importar n, sabiendo que cualquier número elevado a la 0, es 1, entonces al menos empatan en el caso base, podemos llegar a pensar que son la misma función. Para los otros casos, sabemos que exp(n, m) = n * exp (n, m - 1) que al final de cuentas es multiplicar n sí misma, n veces. Ahora la función misteriosa h, si recibe una n impar, va a multiplicar n * h(n, (m - 1)) entonces eso haría que m - 1 fuera par, entonces va a ir calculando n * h(n*n, k) tal que 2*k = m - 1, hasta llegar a 1, que al final regresaría el resultado de elevar n a la m.
+
+\section{Dada la definición de concatenación sobre listas, demostrar por inducción sobre listas que:}
+\begin{enumerate}
+\item $\forall l \in\mathbb{L}$[l ++ [ ] = l]
+Entonces lo haremos por inducción estructural sobre l.
+\begin{enumerate}
+\item Caso base: l = [ ]
+Tenemos que l = [ ] pero queremos demostrar que [ ] ++ [ ] = [ ], entonces por la definición se sigue esto es cierto, puesto que está definida por la izquierda, pero la izquierda es la vacía, entonces se usa la definición y se llega a que [ ] ++ [ ] = [ ].
+\item Hipótesis de Inducción; supongamos que vale para una lista xs.
+\item Paso inductivo: Demostrar que (x:xs) ++ [ ] = (x:xs)
+En este caso ya no tenemos una lista vacía, entonces otra vez siguiendo la definición de la función ++, tenemos que (x:xs) ++ [ ] = x:(xs ++ [ ]) pero por H.I. tenemos que xs ++ [ ] = xs, entonces sustituyendo en la igualdad tenemos que (x:xs) ++ [ ] = (x:xs) probando la igualdad a la que queríamos llegar.
+\QEDB
+\end{enumerate}
+\item $\forall l1, l2, l3 \in\mathbb{L}$ [(l1 ++ l2) ++ l3 = l1 ++ (l2 ++ l3)]
+Lo haremos por inducción sobre l1
+\begin{enumerate}
+\item Caso base: l1 = [ ]
+Vamos a demostrar que ([ ] ++ l2) ++ l3 = [ ] ++ (l2 ++ l3), por definición de concatenación, tenemos que [ ] ++ l2 = l2, entonces en la igualdad original tenemos que l2 ++ l3 = [ ] ++ (l2 ++ l3), pero otra vez, usando la definición, tenemos que [ ] ++ (l2 ++ l3) = l2 ++ l3, cumpliéndose la igualdad.
+\item Hipótesis de Inducción; supongamos que vale para una lista xs.
+\item Paso Inductivo: Demostrar que ((x:xs) ++ l2) ++ l3 = (x:xs) ++ (l2 ++ l3)	
+Usando otra vez las definiciones de concatenación tenemos que para (x:xs) ++ l2 = x:(xs ++ l2) entonces al  concatenarla con la lista l3, primero por definición tenemos que es x:((xs ++ l2) ++ l3) pero también por H.I. sabemos que ((xs ++ l2) ++ l3) conmuta, es decir que es igual a (xs ++ (l2 ++ l3)), entonces tenemos que x:(xs ++ (l2 ++ l3)) quien es por definición (x:xs) ++ (l2 ++ l3), entonces se cumple que ((x:xs) ++ l2) ++ l3 = (x:xs) ++ (l2 ++ l3)
+\QEDB
+\end{enumerate}
+\end{enumerate}
+\section{Definir recursivamente la reversa de una lista y probar 2 propiedades.}
+
+Primero haremos la definición recursiva de reversa de una lista.\\
+\tab rev([ ]) = [ ]\\
+\tab rev(x:xs) = rev(xs) ++ [x]
+
+\begin{enumerate}
+\item Demuestre que $\forall l \in\mathbb{L}$ [rev(rev(l)) = l]
+Por Inducción Estructural sobre l.
+\begin{enumerate}
+\item Caso base: l = [ ]
+Probaremos que rev(rev([ ])) = [ ], entonces rev([ ]) = [ ] por la definición pura, entonces aplicando reversa a ambos lados de la igualdad tenemos que rev(rev([ ])) = rev([ ]), pero por la igualdad anterior tenemos que se cumple que rev(rev([ ])) =[ ].
+\item Hipótesis de Inducción; suponer que vale para una lista xs.
+\item Paso Inductivo: Demostrar que vale para x:xs.
+Basta con probar que rev(rev(x:xs)) = x:xs, entonces, primero, la definición de reversa, nos asegura que rev(x:xs) = rev(xs) ++ [x], observemos que el lado derecho de la igualdad es una lista de igual forma, entonces podemos aplicar reversa otra vez teniendo que rev(rev(x:xs)) = rev(rev(xs)++[x]) pero por cómo está definida la función reversa, primero hacemos rev(rev xs) que ya se vió que es xs, pero lo vamos a ir pegando al final de toda la lista que es [x], entonces tenemos por H.I. que rev(rev(xs) ++ [x]) = [x]++xs que es igual a x:xs, entonces tenemos que rev(rev(x:xs)) = x:xs.
+\QEDB
+\end{enumerate}
+\end{enumerate}
+\end{document}

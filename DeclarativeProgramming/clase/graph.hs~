@@ -1,0 +1,4 @@
+module Graph where
+
+type V = Int
+data Graph = Graph [(V, [V])]
