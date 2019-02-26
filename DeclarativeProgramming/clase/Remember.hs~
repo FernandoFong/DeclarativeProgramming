@@ -1,8 +1,0 @@
-module Remember where
-
-data Nat = Zero
-         | S Nat deriving Show
-
-toInt :: Nat -> Int
-toInt Zero = 0
-toInt (Suc n) = 1 + toInt n
