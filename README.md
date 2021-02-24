@@ -2,6 +2,8 @@
 
 Based on the Declarative Programming course of the Bachelor's program of Computer Science at Facultad de Ciencias, UNAM. The topics covered on this subject are different algorithms to learn a deep knowledge of Haskell using GHCI to execute all functions, for further information continue reading.
 
+[![Haskell](https://img.shields.io/badge/-haskell-purple)](https://www.haskell.org/documentation/)
+
 ## Classwork 0 (Basic Haskell)
 
 The purpose of this classwork is to learn Haskell's most powerful weapon, recursion, alongside with defined objects such as the Natural Numbers () and the operations defined on this group, addition, product and sucessor. Also includes topics such as list comprehension.
